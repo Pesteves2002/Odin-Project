@@ -45,7 +45,18 @@ function playRound(computerChoice, playerChoice) {
 }
 
 function playGame() {
-  for (i = 0; i < 5; i++) playRound(computerPlay(), playerPlay());
+  playRound(computerPlay(), playerPlay());
 }
 
-playGame();
+const paper = document.querySelector("#btn1");
+paper.addEventListener("click", () => {
+  playRound(computerPlay(), "Paper");
+});
+const rock = document.querySelector("#btn2");
+rock.addEventListener("click", () => playRound(computerPlay(), "Rock"));
+const scissor = document.querySelector("#btn3");
+scissor.addEventListener("click", () => playRound(computerPlay(), "Scissors"));
+
+paper.classList.add("button");
+rock.classList.add("button");
+scissor.classList.add("button");
