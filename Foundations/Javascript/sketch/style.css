@@ -1,0 +1,36 @@
+body
+{
+    background-color: darkgray;
+}
+
+h1{
+    font-size: 150px;
+    color: darkblue;
+    display: flex;    justify-content: center;
+
+}
+
+.container
+{
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(16,auto);
+    justify-content: center;
+}
+
+.square
+{
+    background-color: black;
+    height: 30px;
+    width: 30px;
+}
+
+#buttons
+{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    gap: 40px;
+    border-radius: 50%;
+    
+}
