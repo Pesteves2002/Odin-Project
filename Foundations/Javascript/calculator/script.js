@@ -63,6 +63,9 @@ function addListeneres() {
       wrapper_fn(button.id);
     });
   }
+  document.addEventListener("keypress", function (event) {
+    wrapper_fn(event.key);
+  });
 }
 create_calc();
 
@@ -74,6 +77,8 @@ let decimal = 1;
 
 function wrapper_fn(button_info) {
   const index = button_id.indexOf(button_info);
+
+  if (index === -1) return;
 
   // blue buttons and remainder
   if ((index + 1) % 4 === 0 || index === 2) {
