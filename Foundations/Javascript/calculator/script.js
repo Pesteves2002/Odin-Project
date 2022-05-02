@@ -51,66 +51,83 @@ function create_calc() {
   container.appendChild(button_container);
 
   calc.appendChild(container);
+
+  addListeneres();
 }
 
+function addListeneres() {
+  const buttons = document.querySelectorAll("button");
+  for (i = 0; i < 20; i++) {
+    const button = buttons[i];
+    button.addEventListener("click", function () {
+      wrapper_fn(button.id);
+    });
+  }
+}
 create_calc();
-
-const buttons = document.querySelectorAll("button");
-
-for (i = 0; i < 20; i++) {
-  const button = buttons[i];
-  button.addEventListener("click", function () {
-    wrapper_fn(button.id);
-  });
-}
 
 let operation = "";
 let current_value = 0;
 let current_number = 0;
-let after_equals = 0;
+let after_operation = 0;
+let decimal = 1;
 
 function wrapper_fn(button_info) {
   const index = button_id.indexOf(button_info);
 
+  // blue buttons and remainder
   if ((index + 1) % 4 === 0 || index === 2) {
     if (button_info != "=") show_char(button_info);
     else {
       show_num();
     }
+    decimal = 1;
     return;
   } else {
-    const screen = document.getElementById("screen");
+    // specific buttons
     switch (index) {
+      // AC
       case 0:
         current_number = 0;
         current_value = 0;
-        screen.innerText = current_number;
+        after_operation = 0;
+        decimal = 1;
+        printScreen(current_number);
         return;
+      // invert signal
       case 1:
         current_number = -current_number;
         screen.innerText = current_number;
+        decimal = 1;
         return;
-      case 2:
-        show_char(button_info);
+      // decimal point
+      case 17:
+        if (decimal === 1) decimal = 0.1;
         return;
-
+      // pi number
       case 18:
         current_number = Math.PI;
-        screen.innerText = current_number;
-        after_equals = 0;
+        printScreen(current_number);
+        after_operation = 0;
+        decimal = 1;
         return;
     }
     // button_info is a int
 
     button_info = parseInt(button_info);
 
-    if (after_equals === 1) {
+    if (after_operation === 1) {
       current_number = 0;
-      after_equals = 0;
+      after_operation = 0;
     }
-    current_number *= 10;
-    current_number += button_info;
-    screen.innerText = current_number;
+    if (decimal === 1) {
+      current_number *= 10;
+      current_number += button_info;
+    } else {
+      current_number += button_info * decimal;
+      decimal *= 0.1;
+    }
+    printScreen(current_number);
   }
 }
 
@@ -129,18 +146,20 @@ function show_num() {
       current_value /= current_number;
       break;
     case "%":
-      current_value = current_value % current_number;
+      current_value %= current_number;
   }
-  const screen = document.getElementById("screen");
-  screen.innerText = current_value;
-  after_equals = 1;
-  current_number = current_value;
+  printScreen(current_value);
+  after_operation = 1;
 }
 
 function show_char(button_id) {
   operation = button_id;
-  if (after_equals != 1) current_value = current_number;
+  if (after_operation != 1) current_value = current_number;
+  printScreen(button_id);
+  after_operation = 1;
+}
+
+function printScreen(info) {
   const screen = document.getElementById("screen");
-  screen.innerText = button_id;
-  after_equals = 1;
+  screen.innerText = String(info).substring(0, 9);
 }
