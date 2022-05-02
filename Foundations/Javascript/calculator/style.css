@@ -17,8 +17,8 @@ body{
     background-color: gray;
     display: flex;
     flex-direction: column;
-    width: 1000px;
-    height: 500px;
+    width: 350px;
+    height: 350px;
 }
 
 .button_container{
@@ -33,13 +33,17 @@ body{
 
 #screen
 {
-   height:  250px;
+   text-align: right;
+   vertical-align:text-bottom;
+   height:  175px;
+   font-size: 3em;
    background-color: grey;
+   padding: 30px 20px 0 0;
 }
 
 
 button {
-    height: 55px;
+    height: 48px;
     font-weight: initial;
     font-size: 2em;
     font-family: monospace;

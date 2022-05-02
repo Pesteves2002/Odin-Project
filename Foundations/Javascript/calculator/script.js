@@ -55,17 +55,92 @@ function create_calc() {
 
 create_calc();
 
-function show_char(button_id) {
-  console.log(button_id);
-  const screen = document.getElementById("screen");
-  screen.innerText = button_id;
-}
-
 const buttons = document.querySelectorAll("button");
 
 for (i = 0; i < 20; i++) {
   const button = buttons[i];
   button.addEventListener("click", function () {
-    show_char(button.id);
+    wrapper_fn(button.id);
   });
+}
+
+let operation = "";
+let current_value = 0;
+let current_number = 0;
+let after_equals = 0;
+
+function wrapper_fn(button_info) {
+  const index = button_id.indexOf(button_info);
+
+  if ((index + 1) % 4 === 0 || index === 2) {
+    if (button_info != "=") show_char(button_info);
+    else {
+      show_num();
+    }
+    return;
+  } else {
+    const screen = document.getElementById("screen");
+    switch (index) {
+      case 0:
+        current_number = 0;
+        current_value = 0;
+        screen.innerText = current_number;
+        return;
+      case 1:
+        current_number = -current_number;
+        screen.innerText = current_number;
+        return;
+      case 2:
+        show_char(button_info);
+        return;
+
+      case 18:
+        current_number = Math.PI;
+        screen.innerText = current_number;
+        after_equals = 0;
+        return;
+    }
+    // button_info is a int
+
+    button_info = parseInt(button_info);
+
+    if (after_equals === 1) {
+      current_number = 0;
+      after_equals = 0;
+    }
+    current_number *= 10;
+    current_number += button_info;
+    screen.innerText = current_number;
+  }
+}
+
+function show_num() {
+  switch (operation) {
+    case "+":
+      current_value += current_number;
+      break;
+    case "-":
+      current_value -= current_number;
+      break;
+    case "*":
+      current_value *= current_number;
+      break;
+    case "/":
+      current_value /= current_number;
+      break;
+    case "%":
+      current_value = current_value % current_number;
+  }
+  const screen = document.getElementById("screen");
+  screen.innerText = current_value;
+  after_equals = 1;
+  current_number = current_value;
+}
+
+function show_char(button_id) {
+  operation = button_id;
+  if (after_equals != 1) current_value = current_number;
+  const screen = document.getElementById("screen");
+  screen.innerText = button_id;
+  after_equals = 1;
 }
