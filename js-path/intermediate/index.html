@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      tr,
+      th {
+        border: 1px solid green;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="example.com/path" method="post">
+      <label for="date">Date*:</label>
+      <input
+        type="date"
+        id="date"
+        name="first_name"
+        placeholder="12/02/22"
+        required
+      />
+    </form>
+    <form action="" method="get">
+      <textarea rows="10" cols="10" minlength="3" maxlength="4">
+some initial content</textarea
+      >
+    </form>
+    <select name="Car" id="car">
+      <optgroup label="eletric">
+        <option value="mercedes">Mercedes</option>
+        <option value="tesla" selected>Tesla</option>
+        <option value="volvo">Volvo</option>
+      </optgroup>
+      <optgroup label="diesel">
+        <option value="bmw">BMW</option>
+        <option value="mini">Mini</option>
+        <option value="ford">Ford</option>
+      </optgroup>
+    </select>
+    <fieldset>
+      <legend>Mais botoes</legend>
+      <input type="radio" name="ticket" id="train" value="baby" />
+      <label for="baby">baby</label>
+      <input type="radio" name="ticket" id="train" value="adult" checked />
+      <label for="adult">adult</label>
+      <input type="radio" name="ticket" id="train" value="senior" />
+      <label for="senior">senior</label>
+
+      <input type="checkbox" name="topping" id="train" value="baby" />
+      <label for="baby">baby</label>
+      <input type="checkbox" name="topping" id="train" value="adult" checked />
+      <label for="adult">adult</label>
+      <input type="checkbox" name="topping" id="train" value="senior" />
+      <label for="senior">senior</label>
+    </fieldset>
+    <fieldset>
+      <legend>Botões</legend>
+      <button type="submit">CLick me</button>
+      <button type="reset">reset me</button>
+      <button disabled="disabled">Disabled</button>
+      <button type="button">???</button>
+    </fieldset>
+
+    <form action="#" method="get">
+      <div>
+        <label for="zip_code">Postal / Zip Code:</label>
+      </div>
+
+      <input
+        type="text"
+        id="zip_code"
+        name="zip_code"
+        pattern="(\d{5}([\-]\d{4})?)"
+        title="Please enter a valid zip code, example: 65251"
+        placeholder="65251"
+        required
+      />
+
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+
+    <table>
+      <tr>
+        <th>First</th>
+        <th>Second</th>
+      </tr>
+      <tr>
+        <td>This is a data cell</td>
+        <td>This is also a data celllllllllllllll</td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <th>&nbsp;</th>
+        <th>Knocky</th>
+        <th>Flor</th>
+        <th>Ella</th>
+        <th>Juan</th>
+      </tr>
+      <tr>
+        <td>Breed</td>
+        <td>Jack Russell</td>
+        <td>Poodle</td>
+        <td>Streetdog</td>
+        <td>Cocker Spaniel</td>
+      </tr>
+      <tr>
+        <td>Age</td>
+        <td>16</td>
+        <td>9</td>
+        <td>10</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>Owner</td>
+        <td>Mother-in-law</td>
+        <td>Me</td>
+        <td>Me</td>
+        <td>Sister-in-law</td>
+      </tr>
+      <tr>
+        <td>Eating Habits</td>
+        <td>Eats everyone's leftovers</td>
+        <td>Nibbles at food</td>
+        <td>Hearty eater</td>
+        <td>Will eat till he explodes</td>
+      </tr>
+    </table>
+  </body>
+</html>
