@@ -1,0 +1,55 @@
+body {
+  display: flex;
+  background-color: green;
+  height: 100vh;
+  margin: 0;
+}
+
+.background {
+  background-image: url("assets/mohamed-alaau-X-yWQsRSmnI-unsplash.jpg");
+  background-color: black;
+  background-size: cover;
+  flex: auto;
+}
+
+.banner {
+  background-color: black;
+  background-image: url("assets/kisspng-logo-royalty-free-falcon-5ad685e92ca4c4.9973054715240084251829.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.5;
+  height: 15%;
+  margin-top: 40%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  background-color: grey;
+  flex: 2;
+}
+
+.explanation {
+  flex: auto;
+  display: flex;
+  background-color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.explanation p {
+  align-self: flex-end;
+  padding: 10px;
+}
+
+.form-container {
+  flex: 2;
+  background-color: aqua;
+}
+
+.button-container {
+  flex: auto;
+  background-color: purple;
+}
