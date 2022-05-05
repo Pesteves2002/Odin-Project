@@ -33,23 +33,80 @@ body {
 .explanation {
   flex: auto;
   display: flex;
+  flex-direction: column;
   background-color: white;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
+  padding: 10px;
 }
 
-.explanation p {
-  align-self: flex-end;
-  padding: 10px;
+.explanation > p {
+  flex: auto;
 }
 
 .form-container {
   flex: 2;
-  background-color: aqua;
+  background-color: white;
+  display: flex;
+}
+
+.form-container > form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+  font-size: 22px;
+}
+
+input {
+  border-radius: 8px;
+  height: 30px;
+  width: 200px;
+}
+
+input:focus {
+  border-color: darkcyan;
 }
 
 .button-container {
   flex: auto;
+  background-color: white;
+}
+
+.create_account {
+  border-radius: 12px;
+  font-size: 28px;
+  background-color: darkcyan;
+  border: none;
+  padding: 15px;
+  margin: 40px;
+  width: 20%;
+  margin-bottom: 20px;
+}
+
+.create_account:hover {
   background-color: purple;
+}
+
+.log_in {
+  margin: 10px 50px;
+  font-size: 22px;
+}
+
+.log_in > a,
+.log_in > a:visited {
+  color: darkcyan;
+  text-decoration: none;
+}
+
+.log_in > a:hover {
+  color: purple;
+  text-decoration: none;
 }

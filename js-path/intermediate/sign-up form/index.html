@@ -1,31 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Sign-Up Form</title>
-  </head>
-  <body>
-    <div class="background">
-      <div class="banner"></div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Sign-Up Form</title>
+</head>
+
+<body>
+  <div class="background">
+    <div class="banner"></div>
+  </div>
+  <div class="content">
+    <div class="explanation">
+      <p>
+        This is not a real online service! You know you need something like this in your life to help you realize your deepest dreams. Sign up now to get started.
+      </p>
+      <p>
+        You know you want to.
+      </p>
     </div>
-    <div class="content">
-      <div class="explanation">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu eros
-          id nisi semper faucibus. Sed lacus nisl, gravida sit amet purus a,
-          viverra iaculis nulla. Proin non odio at nunc molestie eleifend. Orci
-          varius natoque penatibus et magnis dis parturient montes, nascetur
-          ridiculus mus. Suspendisse potenti.
-        </p>
-      </div>
-      <div class="form-container"></div>
-      <div class="button-container">
-        <button class="create_account"></button>
-        <button class="log_in"></button>
+    <div class="form-container">
+      <form action="#" method="get">
+        <label for="first_name">First Name 
+          <input type="text" id="first_name" name="First Name" required /></label>
+        <label for="last_name">Last Name 
+          <input type="text" id="last_name" name="Last Name" required /></label>
+        <label for="email">Email 
+          <input type="email" id="email" name="Email" required /></label>
+        <label for="phone">Phone Number 
+          <input type="text" id="phone" required /></label>
+        <label for="password">Password 
+          <input type="text" id="password" name="Password" pattern="
+        ^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]).{8,32}$" required />
+        </label>
+        <label for="confirm_pwd">Confirm Password
+          <input type="text" id="confirm_pwd" name="Confirm" pattern="
+        ^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]).{8,32}$" required />
+        </label>
+    </div>
+    <div class="button-container">
+      <button type="submit" class="create_account">Create Account</button>
+      </form>
+      <div class="log_in">
+        Already have an account? <a href=""> Log in</a>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
