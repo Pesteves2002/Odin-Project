@@ -1,0 +1,28 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+img {
+  width: 100px;
+}
+
+.header {
+  grid-column: 2;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  background-color: red;
+}
+
+.search {
+  grid-row: 1;
+}
+
+.profile {
+  grid-row: 1;
+}
+
+.action-center {
+  grid-row: 2;
+  display: flexbox;
+}

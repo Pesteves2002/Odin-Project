@@ -1,0 +1,19 @@
+.container {
+  display: grid;
+  grid-template-columns: 50px 50px;
+  grid-template-rows: 50px 50px;
+  grid-auto-rows: 50px;
+  gap: 50px 10px;
+  border: 1px solid red;
+}
+
+.container > div {
+  border: 1px solid blue;
+}
+
+.super-container {
+  display: grid;
+  border: 1px solid rgb(23, 151, 31);
+  grid-template-columns: 200px 400px;
+  gap: 50px 50px;
+}
