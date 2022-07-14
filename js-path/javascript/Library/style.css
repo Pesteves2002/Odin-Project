@@ -1,0 +1,37 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+.header {
+  background-color: gray;
+}
+
+.all-books {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 35px;
+  margin: 50px;
+}
+
+.book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10%;
+  border-radius: 12px;
+  gap: 10px;
+}
+
+.book p {
+  font-weight: bold;
+}
+
+.read {
+  background-color: rgb(0, 149, 17);
+}
+
+.not-read {
+  background-color: red;
+}
