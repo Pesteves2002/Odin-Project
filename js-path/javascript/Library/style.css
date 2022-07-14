@@ -1,10 +1,63 @@
 body {
   background-color: black;
   color: white;
+  font-family: Arial;
 }
 
 .header {
-  background-color: gray;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+  border-width: 1px 0px;
+  border-style: solid;
+  border-color: #3dde14;
+  gap: 15px;
+}
+
+input[type="text"] {
+  border: 2px solid #3dde14;
+  border-radius: 12px;
+  background-color: black;
+  color: white;
+}
+
+input[type="number"] {
+  border: 2px solid #3dde14;
+  border-radius: 12px;
+  background-color: black;
+  color: white;
+}
+
+input[type="checkbox"] {
+  border: 2px solid #3dde14;
+  border-radius: 12px;
+  background-color: black;
+  color: white;
+}
+
+.add-button {
+  border: 2px solid #3dde14;
+  border-radius: 12px;
+  background-color: black;
+  color: white;
+}
+
+#addBook {
+  padding: 20px;
+}
+
+#addBook label {
+  margin-left: 20px;
+}
+
+#addBook label {
+  margin-right: 10px;
+}
+
+#addBook button {
+  margin-left: 10px;
 }
 
 .all-books {
@@ -34,4 +87,29 @@ body {
 
 .not-read {
   background-color: red;
+}
+
+.bookButtons {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 15px;
+}
+
+.changeButton {
+  color: white;
+  border-radius: 12px;
+  background-color: rgb(255, 145, 0);
+  padding: 20px;
+  border: 0;
+}
+
+.deleteButton {
+  color: white;
+  background-color: rgba(130, 5, 5, 0.686);
+  padding: 20px;
+  border-radius: 12px;
+  border: 0;
 }
