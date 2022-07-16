@@ -3,7 +3,6 @@ body {
   background-color: darkcyan;
   display: flex;
   align-items: center;
-
   justify-content: center;
 }
 
@@ -14,6 +13,7 @@ body {
   align-items: center;
   align-content: center;
   justify-content: center;
+  gap: 50px;
 }
 
 .board-container {
@@ -23,7 +23,8 @@ body {
 
 button {
   border: 0;
-  padding: 40px;
+  padding: 60px;
+  margin: 1px;
 }
 
 .circle {
@@ -32,4 +33,19 @@ button {
 
 .cross {
   background-color: blue;
+}
+
+.banner {
+  background-color: rgb(144, 0, 255);
+  color: white;
+  padding: 10px 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.restart {
+  border-radius: 100%;
+  background-color: yellow;
 }
