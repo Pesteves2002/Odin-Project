@@ -1,26 +1,27 @@
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.info = function () {
+      if (this.read) isRead = " already read";
+      else isRead = " not read yet";
+      return (
+        "Title: " +
+        title +
+        " Author: " +
+        author +
+        " Number of Pages: " +
+        pages +
+        isRead
+      );
+    };
+  }
 
-  this.info = function () {
-    if (this.read) isRead = " already read";
-    else isRead = " not read yet";
-    return (
-      "Title: " +
-      title +
-      " Author: " +
-      author +
-      " Number of Pages: " +
-      pages +
-      isRead
-    );
-  };
-
-  this.toggleRead = function () {
+  toggleRead() {
     this.read = !this.read;
-  };
+  }
 }
 const theHobbit = new Book("The Hobbit", "someone", 567, false);
 const harryPotter = new Book("Harry Potter", "anyone", 34, true);
