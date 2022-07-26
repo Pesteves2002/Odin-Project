@@ -1,0 +1,40 @@
+body {
+  font: 1em sans-serif;
+  background-color: darkorange;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid blue;
+  padding: 020px;
+}
+
+img {
+  width: 300px;
+}
+
+button {
+  background-color: blue;
+  padding: 10px;
+  color: white;
+}
+
+.image-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
