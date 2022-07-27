@@ -13,4 +13,24 @@ const proj1 = new project("odin");
 
 proj1.addTodo(todo1);
 
+let projList = [];
+
+projList.push(proj1);
+projList.push(proj1);
+projList.push(proj1);
+projList.push(proj1);
+
+const projContainer = document.createElement("div");
+projContainer.classList.add("proj-container");
+
+for (let proj of projList) {
+  let projBox = document.createElement("div");
+  projBox.classList.add("proj-box");
+
+  projBox.innerText = proj.getDescription();
+
+  projContainer.appendChild(projBox);
+}
+
+container.appendChild(projContainer);
 body.appendChild(container);

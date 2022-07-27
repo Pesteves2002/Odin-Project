@@ -7,4 +7,12 @@ export class project {
   addTodo(todo) {
     this.list.push(todo);
   }
+
+  getNumOfTodos() {
+    return this.list.length;
+  }
+
+  getDescription() {
+    return this.name + "\n\n" + this.getNumOfTodos();
+  }
 }
