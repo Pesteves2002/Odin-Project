@@ -1,0 +1,21 @@
+.proj-container {
+  display: flex;
+  gap: 30px;
+}
+
+.proj-box {
+  background-color: blue;
+  padding: 30px;
+  color: white;
+}
+
+button {
+  padding: 30px;
+  background-color: green;
+}
+
+.to-do-box {
+  background-color: red;
+  padding: 30px;
+  color: white;
+}

@@ -4,8 +4,12 @@ export class project {
     this.list = [];
   }
 
-  addTodo(todo) {
+  addToDo(todo) {
     this.list.push(todo);
+  }
+
+  getToDoList() {
+    return this.list;
   }
 
   getNumOfTodos() {
