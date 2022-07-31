@@ -1,4 +1,6 @@
-Personal Repository with some projects from the (Odin Project](https://www.theodinproject.com/about].
+# Odin Project
+
+Personal Repository with some projects from the [Odin Project](https://www.theodinproject.com/about).
 
 - HTML and CSS
   - [Introduction to basic HTML](https://pesteves2002.github.io/Odin-Project/Foundations/html-boilerplate/)
