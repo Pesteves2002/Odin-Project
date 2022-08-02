@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="#">
+    <input type="text" name="search" id="gifName">
+    <button> Change gif</button>
+
+    <script>
+        const buttonSearch = document.querySelector("button");
+        const search = document.getElementById("gifName");
+
+
+
+        buttonSearch.addEventListener("click", () => newImage())
+
+        const img = document.querySelector('img');
+        async function newImage() {
+            try {
+                const response = await fetch("http://api.giphy.com/v1/gifs/translate?api_key=DPReg08ByiQ8PEvtfEE5WALXvXbXJKIv&s=" + search.value, { mode: 'cors' })
+                const responseData = await response.json()
+                img.src = responseData.data.images.original.url;
+            }
+            catch {
+                (error) =>
+                    console.log(error)
+            }
+        }
+    </script>
+</body>
+
+</html>
