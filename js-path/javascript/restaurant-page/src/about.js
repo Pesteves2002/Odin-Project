@@ -16,8 +16,8 @@ export default function createAbout() {
   myImage.src = pizza;
 
   header.appendChild(buttons);
+  container.appendChild(header);
   imageContainer.appendChild(myImage);
   container.appendChild(imageContainer);
-  container.appendChild(header);
   return container;
 }

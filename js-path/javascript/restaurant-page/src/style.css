@@ -13,14 +13,15 @@ body {
   display: flex;
   justify-content: center;
   padding: 15px;
+  border: 1px solid blue;
+  border-radius: 14px;
 }
 
 .button-container {
   display: flex;
   align-items: center;
   gap: 15px;
-  border: 1px solid blue;
-  padding: 020px;
+  padding: 20px;
 }
 
 img {
@@ -37,4 +38,19 @@ button {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 50px;
+}
+
+.menu-container {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  align-items: center;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  padding: 40px;
 }
