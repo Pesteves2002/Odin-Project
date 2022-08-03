@@ -20,3 +20,5 @@ Personal Repository with some projects from the [Odin Project](https://www.theod
     - [Tic Tac Toe](https://pesteves2002.github.io/Odin-Project/js-path/javascript/tic-tac-toe/)
   - Webpack
     - [Restaurant Page](https://pesteves2002.github.io/Odin-Project/js-path/javascript/restaurant-page/dist/)
+  - APIs
+    - [Weather App](https://pesteves2002.github.io/Odin-Project/js-path/javascript/weather-app/dist/)
