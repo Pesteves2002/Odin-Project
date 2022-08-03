@@ -3,7 +3,8 @@ async function getData(city) {
     const response = await fetch(
       "https://api.openweathermap.org/data/2.5/weather?q=" +
         city +
-        "&appid=cf9c9ff587249a10b86d039d23ae47bc"
+        "&appid=" +
+        config.API_KEY
     );
 
     const data = await response.json();
