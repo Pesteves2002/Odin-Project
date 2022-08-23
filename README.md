@@ -16,7 +16,7 @@ Personal Repository with some projects from the [Odin Project](https://www.theod
     - [Simple Rock Paper Scissor Game](https://pesteves2002.github.io/Odin-Project/Foundations/Javascript/Rock-Paper-Scissor/)
     - [Sketch Board](https://pesteves2002.github.io/Odin-Project/Foundations/Javascript/sketch/)
     - [Simple Calculator](https://pesteves2002.github.io/Odin-Project/Foundations/Javascript/calculator/)
-    - [Library](https://pesteves2002.github.io/Odin-Project/js-path/javascript/Library/)
+    - [Library](https://pesteves2002.github.io/Odin-Project/js-path/javascript/Library/dist/)
     - [Tic Tac Toe](https://pesteves2002.github.io/Odin-Project/js-path/javascript/tic-tac-toe/)
   - Webpack
     - [Restaurant Page](https://pesteves2002.github.io/Odin-Project/js-path/javascript/restaurant-page/dist/)
