@@ -15,6 +15,7 @@ import {
   serverTimestamp,
   deleteDoc,
   getDoc,
+  getDocs,
 } from "firebase/firestore";
 
 import { getFirebaseConfig } from "./firebase-config.js";
@@ -133,12 +134,14 @@ function changeReadStatus(bookNum) {
 }
 
 async function deleteBook(bookId) {
-  let book = document.getElementById(bookId);
-  book.remove();
-
   let getID = bookId.split("k")[1];
+  console.log(getID);
   try {
+    console.log(myLibrary[getID].id);
+
     await deleteDoc(doc(getFirestore(), "books", myLibrary[getID].id));
+    let book = document.getElementById(bookId);
+    book.style.display = "none";
   } catch (error) {
     console.error("Error deleting book", error);
   }
@@ -168,6 +171,10 @@ async function add_book_functionality() {
   let newID = await saveBook(book);
   book.setID(newID);
   addBookToLibrary(book);
+  const display = displayAllBooks();
+
+  const container = document.querySelector(".books-container");
+  container.replaceChildren(display);
 }
 
 function create_webpage() {
@@ -181,6 +188,7 @@ function create_webpage() {
   container.classList.add("library-container");
 
   const shelf = document.createElement("div");
+  shelf.classList.add("books-container");
   const all_books = displayAllBooks();
 
   shelf.appendChild(all_books);
@@ -197,21 +205,20 @@ async function saveBook(book) {
   }
 }
 
-function loadBooks() {
+async function loadBooks() {
   const allBooksQuery = query(
     collection(getFirestore(), "books"),
     orderBy("title", "desc")
   );
 
-  // Start listening to the query.
-  onSnapshot(allBooksQuery, function (snapshot) {
-    snapshot.docChanges().forEach(function (change) {
-      var newBook = JsonToBook(change.doc.data());
-      newBook.setID(change.doc.id);
-      addBookToLibrary(newBook);
-      let all_books = document.querySelector(".all-books");
-      all_books.appendChild(create_book(newBook));
-    });
+  const querySnapshot = await getDocs(allBooksQuery);
+
+  querySnapshot.forEach((doc) => {
+    var newBook = JsonToBook(doc.data());
+    newBook.setID(doc.id);
+    addBookToLibrary(newBook);
+    let all_books = document.querySelector(".all-books");
+    all_books.appendChild(create_book(newBook));
   });
 }
 
