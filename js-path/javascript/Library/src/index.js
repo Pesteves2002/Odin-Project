@@ -1,9 +1,35 @@
+import "./style.css";
+
+import { initializeApp } from "firebase/app";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  query,
+  orderBy,
+  limit,
+  onSnapshot,
+  setDoc,
+  updateDoc,
+  doc,
+  serverTimestamp,
+  deleteDoc,
+  getDoc,
+  getDocs,
+} from "firebase/firestore";
+
+import { getFirebaseConfig } from "./firebase-config.js";
+
+const firebaseAppConfig = getFirebaseConfig();
+initializeApp(firebaseAppConfig);
+
 class Book {
   constructor(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.id = 0;
     this.info = function () {
       if (this.read) isRead = " already read";
       else isRead = " not read yet";
@@ -18,13 +44,14 @@ class Book {
       );
     };
   }
+  setID(newID) {
+    this.id = newID;
+  }
 
   toggleRead() {
     this.read = !this.read;
   }
 }
-const theHobbit = new Book("The Hobbit", "someone", 567, false);
-const harryPotter = new Book("Harry Potter", "anyone", 34, true);
 
 let myLibrary = [];
 
@@ -35,7 +62,7 @@ function addBookToLibrary(book) {
 function displayAllBooks() {
   const all_books = document.createElement("div");
   all_books.classList.add("all-books");
-  for (book of myLibrary) {
+  for (const book of myLibrary) {
     let book_info = create_book(book);
 
     all_books.appendChild(book_info);
@@ -105,13 +132,22 @@ function changeReadStatus(bookNum) {
     book.classList.add("read");
   }
 }
-function deleteBook(bookId) {
-  let book = document.getElementById(bookId);
-  console.log(book);
-  book.remove();
+
+async function deleteBook(bookId) {
+  let getID = bookId.split("k")[1];
+  console.log(getID);
+  try {
+    console.log(myLibrary[getID].id);
+
+    await deleteDoc(doc(getFirestore(), "books", myLibrary[getID].id));
+    let book = document.getElementById(bookId);
+    book.style.display = "none";
+  } catch (error) {
+    console.error("Error deleting book", error);
+  }
 }
 
-function add_book_functionality() {
+async function add_book_functionality() {
   let newBook = document.forms["addBook"];
   let newBookName = newBook["bookName"].value;
   let newBookAuthor = newBook["author"].value;
@@ -132,9 +168,13 @@ function add_book_functionality() {
     newBookNumPages,
     newBookRead
   );
+  let newID = await saveBook(book);
+  book.setID(newID);
   addBookToLibrary(book);
-  let all_books = document.querySelector(".all-books");
-  all_books.appendChild(create_book(book));
+  const display = displayAllBooks();
+
+  const container = document.querySelector(".books-container");
+  container.replaceChildren(display);
 }
 
 function create_webpage() {
@@ -148,22 +188,55 @@ function create_webpage() {
   container.classList.add("library-container");
 
   const shelf = document.createElement("div");
+  shelf.classList.add("books-container");
   const all_books = displayAllBooks();
 
   shelf.appendChild(all_books);
   library.appendChild(shelf);
 }
 
+async function saveBook(book) {
+  const bookJSON = bookToJson(book);
+  try {
+    let response = await addDoc(collection(getFirestore(), "books"), bookJSON);
+    return response.id;
+  } catch (error) {
+    console.error("Error writing new message to Firebase Database", error);
+  }
+}
+
+async function loadBooks() {
+  const allBooksQuery = query(
+    collection(getFirestore(), "books"),
+    orderBy("title", "desc")
+  );
+
+  const querySnapshot = await getDocs(allBooksQuery);
+
+  querySnapshot.forEach((doc) => {
+    var newBook = JsonToBook(doc.data());
+    newBook.setID(doc.id);
+    addBookToLibrary(newBook);
+    let all_books = document.querySelector(".all-books");
+    all_books.appendChild(create_book(newBook));
+  });
+}
+
+const bookToJson = (book) => {
+  return {
+    title: book.title,
+    author: book.author,
+    pages: book.pages,
+    read: book.read,
+    id: book.id,
+  };
+};
+
+const JsonToBook = (book) => {
+  return new Book(book.title, book.author, book.pages, book.read, book.id);
+};
+
 let numBooks = 0;
 
-addBookToLibrary(theHobbit);
-addBookToLibrary(theHobbit);
-addBookToLibrary(theHobbit);
-addBookToLibrary(theHobbit);
-addBookToLibrary(harryPotter);
-addBookToLibrary(harryPotter);
-addBookToLibrary(harryPotter);
-addBookToLibrary(harryPotter);
-addBookToLibrary(theHobbit);
-
+loadBooks();
 create_webpage();
