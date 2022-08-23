@@ -1,3 +1,19 @@
+import "./style.css";
+
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCrq-Bwzuk0vW91tU7mj1TX1TuKu3sArdE",
+  authDomain: "library-48020.firebaseapp.com",
+  projectId: "library-48020",
+  storageBucket: "library-48020.appspot.com",
+  messagingSenderId: "1072818989073",
+  appId: "1:1072818989073:web:f17ee1b4929adfecbe29b0",
+  measurementId: "G-HBNPN27XKW",
+};
+
+const app = initializeApp(firebaseConfig);
+
 class Book {
   constructor(title, author, pages, read) {
     this.title = title;
@@ -23,6 +39,7 @@ class Book {
     this.read = !this.read;
   }
 }
+
 const theHobbit = new Book("The Hobbit", "someone", 567, false);
 const harryPotter = new Book("Harry Potter", "anyone", 34, true);
 
@@ -35,7 +52,8 @@ function addBookToLibrary(book) {
 function displayAllBooks() {
   const all_books = document.createElement("div");
   all_books.classList.add("all-books");
-  for (book of myLibrary) {
+  console.table(myLibrary);
+  for (const book of myLibrary) {
     let book_info = create_book(book);
 
     all_books.appendChild(book_info);
@@ -153,6 +171,19 @@ function create_webpage() {
   shelf.appendChild(all_books);
   library.appendChild(shelf);
 }
+
+const bookToJson = (book) => {
+  return {
+    title: book.title,
+    author: book.author,
+    pages: book.pages,
+    read: book.read,
+  };
+};
+
+const JsonToBook = (book) => {
+  return new Book(book.title, book.author, book.pages, book.read);
+};
 
 let numBooks = 0;
 
