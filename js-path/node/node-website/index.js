@@ -1,8 +1,16 @@
-const http = require("http");
-const fs = require("fs");
 const express = require("express");
 const path = require("path");
 const app = express();
+
+const myLogger = function (req, res, next) {
+  console.log("Request IP: " + req.ip);
+  console.log("Request Method: " + req.method);
+  console.log("Request date: " + new Date());
+
+  next(); // THIS IS IMPORTANT!
+};
+
+app.use(myLogger);
 
 const port = 8080;
 
