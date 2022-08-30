@@ -1,0 +1,3 @@
+const FIREBASE_CONFIG = process.env.FIREBASE_CONFIG;
+
+export { FIREBASE_CONFIG };
