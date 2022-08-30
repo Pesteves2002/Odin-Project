@@ -1,5 +1,5 @@
 /////// app.js
-
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const session = require("express-session");
@@ -19,9 +19,6 @@ passport.use(
         return done(null, false, { message: "Incorrect username" });
       }
       bcrypt.compare(password, user.password, (err, res) => {
-        console.log(password);
-        console.log(user.password);
-        console.log(res);
         if (res) {
           // passwords match! log user in
           return done(null, user);
@@ -44,8 +41,7 @@ passport.deserializeUser(function (id, done) {
   });
 });
 
-const mongoDb =
-  "mongodb+srv://testemongodb:0H57emXuuCzgU6x7@cluster0.3fkzt8r.mongodb.net/?retryWrites=true&w=majority";
+const mongoDb = process.env.MONGODBURL;
 mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
