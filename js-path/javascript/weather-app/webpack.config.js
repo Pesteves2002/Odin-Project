@@ -1,7 +1,7 @@
 const path = require("path");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
-  mode: "development",
   devtool: "inline-source-map",
 
   entry: {
@@ -25,4 +25,6 @@ module.exports = {
       },
     ],
   },
+  plugins: [new Dotenv()],
+  mode: "production",
 };
